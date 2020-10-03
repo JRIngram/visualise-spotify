@@ -6,7 +6,9 @@
     },
     "scripts": {
         "heroku-postbuild": "npm run build --prefix client",
-        "start": "npm start --prefix client"
+        "start": "npm start --prefix client",
+        "lint": "npx eslint '**/*.{js,jsx}' --quiet",
+        "lint:fix": "npx eslint '**/*.{js,jsx}' --quiet --fix"
     },
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",
@@ -22,5 +24,13 @@
         "react-spring": "^8.0.27",
         "spotify-web-api-js": "^1.2.0",
         "serve": "^10.1.2"
+    },
+    "devDependencies": {
+        "eslint": "^7.10.0",
+        "eslint-config-airbnb": "^18.2.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-react": "^7.21.3",
+        "eslint-plugin-react-hooks": "^4.1.2"
     }
 }
