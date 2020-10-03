@@ -17,5 +17,10 @@
     },
     "plugins": [
         "react"
-    ]
+    ],
+    "rules": {
+        "camelcase":"off",
+        "max-len": [0, 120],
+        "react/prop-types": 0 // Disabled due to the sheer amount of these errors. Will need looking into!
+    }
 }

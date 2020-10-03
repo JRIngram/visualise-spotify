@@ -4,6 +4,7 @@
     "description": "Basic examples of the Spotify authorization flows through OAuth 2",
     "version": "0.0.2",
     "dependencies": {
+        "bootstrap": "^4.5.2",
         "concurrently": "^5.1.0",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.4",
@@ -11,7 +12,8 @@
         "querystring": "~0.2.0",
         "request": "~2.83.0",
         "safe-buffer": "^5.2.1",
-        "safer-buffer": "^2.1.2"
+        "safer-buffer": "^2.1.2",
+        "spotify-web-api-js": "^1.5.0"
     },
     "scripts": {
         "start": "node authorization/app.js",

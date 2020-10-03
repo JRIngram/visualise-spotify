@@ -13,7 +13,7 @@
  */
 export function calculateAveragePopularity(popularityData, numberOfSongs) {
   let sumOfPopularities = 0;
-  for (let i = 0; i < popularityData.length; i++) {
+  for (let i = 0; i < popularityData.length; i += 1) {
     sumOfPopularities += popularityData[i];
   }
   const averagePopularity = sumOfPopularities / numberOfSongs;
@@ -40,7 +40,7 @@ export function generateTextForAveragePopularity(averagePopularity) {
  */
 export function chartColours(selectedItemIndex) {
   const colours = [];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i += 1) {
     if (i === selectedItemIndex) {
       colours.push('#ffaf24');
     } else {
