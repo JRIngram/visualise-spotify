@@ -33,7 +33,7 @@ class App extends Component {
     // --> there is a /logout endpoint on the server side which will redirect to the spotify log out page,
     // but we still need to be able to redirect back to our login page when that request has been made
     logOut = () => {
-        var url = window.location.href;
+        const url = window.location.href;
         if (url.includes("localhost")) {
             window.location.replace("http://localhost:3000/")
         } else {

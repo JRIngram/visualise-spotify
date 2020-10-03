@@ -7,8 +7,9 @@
     "scripts": {
         "heroku-postbuild": "npm run build --prefix client",
         "start": "npm start --prefix client",
-        "lint": "npx eslint '**/*.{js,jsx}' --quiet",
-        "lint:fix": "npx eslint '**/*.{js,jsx}' --quiet --fix"
+        "lint": "npx eslint '**/*.{js,jsx}'",
+        "lint:fix": "npx eslint '**/*.{js,jsx}' --fix"
+        
     },
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",

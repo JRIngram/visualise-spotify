@@ -19,8 +19,6 @@
         "react"
     ],
     "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "double"]
-    },
-    "ignorePatterns": ["**/node_modules/*.js", "client/node_modules/*", "auth/node_modules/*"]
+        "no-var": "error"
+    }
 }
