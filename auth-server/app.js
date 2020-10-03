@@ -1,4 +1,5 @@
 import { Buffer } from 'safer-buffer';
+import { logMessage } from './ConsoleOutput';
 
 const express = require('express');
 const request = require('request');
@@ -9,7 +10,6 @@ const config = require('./config.json');
 
 const safeBuffer = Buffer;
 const app = express();
-const { log } = console;
 
 app.use(express.static(`${__dirname}/public`))
   .use(cors())
@@ -102,7 +102,7 @@ app.get('/callback', (req, res) => {
 
         // use the access token to access the Spotify Web API
         request.get(options, () => {
-          log(body);
+          logMessage(body);
         });
 
         // pass the token to the browser to make requests from there
@@ -154,7 +154,7 @@ let port = process.env.PORT;
 if (port == null || port === '') {
   port = 8888;
 }
-log(`Listening on ${port}`);
+logMessage(`Listening on ${port}`);
 app.listen(process.env.PORT || 8888, () => {
-  log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
+  logMessage('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
 });

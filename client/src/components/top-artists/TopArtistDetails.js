@@ -4,6 +4,7 @@ import Tab from 'react-bootstrap/Tab';
 import TopArtistPopularity from './TopArtistPopularity';
 import TopArtistSimilarArtists from './TopArtistSimilarArtists';
 import { playOrPausePreview } from '../../helpers/TrackPreviewHelper.js';
+import { logError } from '../../helpers/ConsoleOutput';
 
 /**
  * Responsible for displaying the details for the currently selected artist
@@ -32,7 +33,7 @@ class TopArtistDetails extends Component {
                 this.props.checkFollowingArtist(artistId);
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 
@@ -45,7 +46,7 @@ class TopArtistDetails extends Component {
                 this.props.checkFollowingArtist(artistId);
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 

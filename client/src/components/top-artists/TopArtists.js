@@ -8,6 +8,7 @@ import ErrorPage from '../../ErrorPage';
 import { getCurrentDate } from '../../helpers/DateHelper.js';
 import { chartColours } from '../../helpers/PopularityChartHelper.js';
 import { uploadPlaylistImage, meet100TrackLimit, getTopTracksForArtists } from '../../helpers/PlaylistHelper.js';
+import { logError } from '../../helpers/ConsoleOutput';
 import './TopArtists.css';
 
 //Set the amount of similar artists to be displayed (MAX=20)
@@ -79,7 +80,7 @@ class TopArtists extends Component {
 
                 })
                 .catch((err) => {
-                    console.error(err);
+                    logError(err);
                 })
         })
 
@@ -93,7 +94,7 @@ class TopArtists extends Component {
                     return resolve(response.items);
                 })
                 .catch((err) => {
-                    console.error(err);
+                    logError(err);
                 })
         })
     }
@@ -109,7 +110,7 @@ class TopArtists extends Component {
                 })
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 
@@ -123,7 +124,7 @@ class TopArtists extends Component {
                 })
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 
@@ -139,7 +140,7 @@ class TopArtists extends Component {
                 //TODO >>> SUCCESS DIALOG AFTER EVERYTHING'S LOADED
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             });
     }
 
@@ -157,18 +158,18 @@ class TopArtists extends Component {
                     for (let fullPlaylist of fullPlaylists) {
                         this.props.spotifyWebApi.addTracksToPlaylist(playlistId, fullPlaylist)
                             .catch((err) => {
-                                console.error(err);
+                                logError(err);
                             })
                     }
                 } else {
                     this.props.spotifyWebApi.addTracksToPlaylist(playlistId, trackUris)
                         .catch((err) => {
-                            console.error(err);
+                            logError(err);
                         })
                 }
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 

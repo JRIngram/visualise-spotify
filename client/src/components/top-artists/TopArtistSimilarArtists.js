@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SimilarArtistsModal from './SimilarArtistsModal';
 import { meet100TrackLimit, getTopTracksForArtists, uploadPlaylistImage } from '../../helpers/PlaylistHelper.js';
+import { logError } from '../../helpers/ConsoleOutput';
 
 /**
  * Responsible for displaying the similar artists of the selected artist
@@ -20,7 +21,7 @@ class TopArtistSimilarArtists extends Component {
                 //              //TODO >>> SUCCESS DIALOG AFTER EVERYTHING'S LOADED
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             });
     }
 
@@ -39,18 +40,18 @@ class TopArtistSimilarArtists extends Component {
                     for (let fullPlaylist of fullPlaylists) {
                         this.props.spotifyWebApi.addTracksToPlaylist(playlistId, fullPlaylist)
                             .catch((err) => {
-                                console.error(err);
+                                logError(err);
                             })
                     }
                 } else {
                     this.props.spotifyWebApi.addTracksToPlaylist(playlistId, trackUris)
                         .catch((err) => {
-                            console.error(err);
+                            logError(err);
                         })
                 }
             })
             .catch((err) => {
-                console.error(err);
+                logError(err);
             })
     }
 

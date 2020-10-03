@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './NowPlaying.css';
+import { logMessage } from '../../helpers/ConsoleOutput'
 
 class NowPlaying extends Component {
     constructor() {
@@ -18,7 +19,7 @@ class NowPlaying extends Component {
 
     getNowPlaying = (spotifyWebApi) => {
         spotifyWebApi.getMyCurrentPlaybackState().then((response) => {
-            console.log(response);
+            logMessage(response);
             if (response.item == null) {
                 this.setState({
                     spotifyIsPlaying: false
@@ -38,7 +39,7 @@ class NowPlaying extends Component {
 
     skipToNext = () => {
         this.props.spotifyWebApi.skipToNext().then((response) => {
-            console.log(response);
+            logMessage(response);
         })
     }
 

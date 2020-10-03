@@ -13,6 +13,8 @@ import Welcome from './components/welcome/Welcome';
 import FrequentlyAskedQuestions from './components/faq/FrequentlyAskedQuestions';
 import getHashParams from "./hash.js";
 
+import { logMessage } from './helpers/ConsoleOutput';
+
 const spotifyWebApi = new Spotify();
 
 class App extends Component {
@@ -54,7 +56,7 @@ class App extends Component {
                     userDetails: response,
                     dataLoaded: true
                 })
-                console.log(response);
+                logMessage(response);
             })
     }
 

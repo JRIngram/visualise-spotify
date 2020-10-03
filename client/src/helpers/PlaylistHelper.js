@@ -1,11 +1,12 @@
 import { toDataURL } from './Base64ImageHelper.js';
+import { logError } from './ConsoleOutput';
 
 // Uploads a custom cover image to the given playlist
 export function uploadPlaylistImage(spotifyWebApi, playlistId, playlistImageURL) {
   toDataURL(playlistImageURL).then((dataURL) => {
     spotifyWebApi.uploadCustomPlaylistCoverImage(playlistId, dataURL)
       .catch((err) => {
-        console.error(err);
+        logError(err);
       });
   });
 }
@@ -53,7 +54,7 @@ async function getArtistTracks(artistId, numOfTracks, spotifyWebApi) {
         return resolve(response.tracks.slice(0, numOfTracks));
       })
       .catch((err) => {
-        console.error(err);
+        logError(err);
       });
   });
 }
