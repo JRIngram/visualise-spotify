@@ -1,15 +1,14 @@
 import { toDataURL } from './Base64ImageHelper.js';
 
-//Uploads a custom cover image to the given playlist
-export function uploadPlaylistImage(spotifyWebApi, playlistId, playlistImageURL){
-    toDataURL(playlistImageURL).then((dataURL) => {
-        spotifyWebApi.uploadCustomPlaylistCoverImage(playlistId, dataURL)
-            .catch((err) => {
-                console.error(err);
-            });
-    });
+// Uploads a custom cover image to the given playlist
+export function uploadPlaylistImage(spotifyWebApi, playlistId, playlistImageURL) {
+  toDataURL(playlistImageURL).then((dataURL) => {
+    spotifyWebApi.uploadCustomPlaylistCoverImage(playlistId, dataURL)
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 }
-
 
 /**
  * The spotify API only allows 100 songs to be added to a playlist in one request
@@ -17,49 +16,44 @@ export function uploadPlaylistImage(spotifyWebApi, playlistId, playlistImageURL)
  * so songs can be added to the same playlist iteratively
  */
 export function meet100TrackLimit(overLimit) {
-    var result = overLimit.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / 100)
+  const result = overLimit.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / 100);
 
-        if (!resultArray[chunkIndex]) {
-            resultArray[chunkIndex] = [] // start a new chunk
-        }
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = []; // start a new chunk
+    }
 
-        resultArray[chunkIndex].push(item)
+    resultArray[chunkIndex].push(item);
 
-        return resultArray
-    }, [])
-    return result;
+    return resultArray;
+  }, []);
+  return result;
 }
 
-
-//Get x number of top tracks for a given array of artists
+// Get x number of top tracks for a given array of artists
 export function getTopTracksForArtists(artists, numOfTracks, spotifyWebApi) {
-    return new Promise(resolve => {
-        var promises = [];
-        for (let artist of artists) {
-            promises.push(getArtistTracks(artist.id, numOfTracks, spotifyWebApi))
-        }
-        Promise.all(promises).then((topTracks) => {
-            return resolve(topTracks);
-        })
-    })
-
+  return new Promise((resolve) => {
+    const promises = [];
+    for (const artist of artists) {
+      promises.push(getArtistTracks(artist.id, numOfTracks, spotifyWebApi));
+    }
+    Promise.all(promises).then((topTracks) => resolve(topTracks));
+  });
 }
 
-//Get the top tracks for a single artist
-async function getArtistTracks (artistId, numOfTracks, spotifyWebApi) {
-    return new Promise(resolve => {
-        //TODO: need to get rid of "GB" string
-        spotifyWebApi.getArtistTopTracks(artistId, "GB")
-            .then((response) => {
-                if (numOfTracks === 1) {
-                    return resolve(response.tracks[0]);
-                } else {
-                    return resolve(response.tracks.slice(0, numOfTracks));
-                }
-            })
-            .catch((err) => {
-                console.error(err);
-            })
-    })
+// Get the top tracks for a single artist
+async function getArtistTracks(artistId, numOfTracks, spotifyWebApi) {
+  return new Promise((resolve) => {
+    // TODO: need to get rid of "GB" string
+    spotifyWebApi.getArtistTopTracks(artistId, 'GB')
+      .then((response) => {
+        if (numOfTracks === 1) {
+          return resolve(response.tracks[0]);
+        }
+        return resolve(response.tracks.slice(0, numOfTracks));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 }

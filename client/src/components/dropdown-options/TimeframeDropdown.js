@@ -10,15 +10,13 @@ class TimeframeDropdown extends Component {
     if (this.props.isLoaded === true) {
       return (
         <DropdownButton className="dropdown" title={this.props.titleTimeframe} id="action-button">
-        <Dropdown.Item onClick={() => { this.props.selectTimeframe("long_term") }}>All Time</Dropdown.Item>
-        <Dropdown.Item onClick={() => { this.props.selectTimeframe("medium_term") }}>The Last 6 Months</Dropdown.Item>
-        <Dropdown.Item onClick={() => { this.props.selectTimeframe("short_term") }}>The Last Month</Dropdown.Item>
+          <Dropdown.Item onClick={() => { this.props.selectTimeframe('long_term'); }}>All Time</Dropdown.Item>
+          <Dropdown.Item onClick={() => { this.props.selectTimeframe('medium_term'); }}>The Last 6 Months</Dropdown.Item>
+          <Dropdown.Item onClick={() => { this.props.selectTimeframe('short_term'); }}>The Last Month</Dropdown.Item>
         </DropdownButton>
       );
-    } else {
-      return <p>Loading...</p>
     }
-
+    return <p>Loading...</p>;
   }
 }
 
